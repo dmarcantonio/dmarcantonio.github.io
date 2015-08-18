@@ -162,10 +162,10 @@ $("#home").backstretch([
 =============================================== */
     $("#testimonial").owlCarousel({
       navigation : false,
-      slideSpeed : 300,
+      slideSpeed : 600,
       pagination: true,
-      paginationSpeed : 400,
-      autoPlay: 3000,
+      paginationSpeed : 800,
+      autoPlay: 4000,
       singleItem : true
     });
 
