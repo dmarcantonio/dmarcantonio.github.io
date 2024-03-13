@@ -68,18 +68,13 @@
 <body>
     <div class="container">
         <h2>Email Campaign</h2>
-        <p>Fill out the form below to participate in our email campaign. By submitting this form, you consent to receive email communications from us.</p>
-        <textarea id="emailContent" readonly>To: recipient@example.com
-Subject: Contact Request
-
-Name:
-Local:</textarea>
+        <p>Fill out the form below to participate in our email campaign.</p>
         <form id="emailForm">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
             <label for="local">Local:</label>
             <input type="text" id="local" name="local" required>
-            <input type="submit" value="Send Email">
+            <input type="submit" value="Generate Email Link">
         </form>
         <p class="disclaimer">Note: This form operates entirely on your device, and no data is stored.</p>
     </div>
@@ -89,8 +84,21 @@ Local:</textarea>
             event.preventDefault(); // Prevent form submission
             var name = document.getElementById('name').value;
             var local = document.getElementById('local').value;
-            var emailContent = 'To: recipient@example.com\nSubject: Contact Request\n\nName: ' + name + '\nLocal: ' + local;
-            document.getElementById('emailContent').innerText = emailContent;
+            var subject = 'test campaign subject';
+            var body = "Dear BBBB local, component, and provincial executives,\n" +
+"\n" +
+"I am calling on you, as a BBBB member and a member of Labour for Palestine, demanding that you:\n" +
+"1. Send a letter to Premier EEE:\n" +
+"    - rejecting unfounded smears of BC Public Service workers\n" +
+"    - demanding that the Premier carefully define the meaning of antisemitism used in his statements and how he plans to direct employers to identify and fight it\n" +
+"    - reasserting to the Premier the political rights of BC Public Servants and expectations in regards to being a non-partisan workplace\n" +
+"    - reasserting the professionalism and inclusiveness of teachers and public sector workers\n" +
+"2. Communicate to BBBB members with information on their rights as promised\n" +
+"\n" +
+"Sincerely," +
+"\n\n" + name + "\nLocal: " + local;
+            var mailtoLink = 'mailto:recipient@example.com' + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            window.location.href = mailtoLink; // Redirect to mailto link
         });
     </script>
 </body>
