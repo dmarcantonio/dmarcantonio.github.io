@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: none;
+            font-family: Arial, sans-serif;
+        }
+        .disclaimer {
+            font-size: 0.8em;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Email Campaign</h2>
+        <p>Fill out the form below to participate in our email campaign. By submitting this form, you consent to receive email communications from us.</p>
+        <textarea id="emailContent" readonly>To: recipient@example.com
+Subject: Contact Request
+
+Name:
+Local:</textarea>
+        <form id="emailForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="local">Local:</label>
+            <input type="text" id="local" name="local" required>
+            <input type="submit" value="Send Email">
+        </form>
+        <p class="disclaimer">Note: This form operates entirely on your device, and no data is stored.</p>
+    </div>
+
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            var name = document.getElementById('name').value;
+            var local = document.getElementById('local').value;
+            var emailContent = 'To: recipient@example.com\nSubject: Contact Request\n\nName: ' + name + '\nLocal: ' + local;
+            document.getElementById('emailContent').innerText = emailContent;
+        });
+    </script>
+</body>
+</html>
