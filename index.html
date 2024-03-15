@@ -1,105 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Email Form</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        textarea {
-            width: 100%;
-            height: 100px;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            resize: none;
-            font-family: Arial, sans-serif;
-        }
-        .disclaimer {
-            font-size: 0.8em;
-            color: #666;
-            text-align: center;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type="button"],
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      input[type="button"]:hover,
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      textarea {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: none;
+        font-family: Arial, sans-serif;
+      }
+      .disclaimer {
+        font-size: 0.8em;
+        color: #666;
+        text-align: center;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h2>Email Campaign</h2>
-        <p>Fill out the form below to participate in our email campaign.</p>
-        <form id="emailForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="local">Local:</label>
-            <input type="text" id="local" name="local" required>
-            <input type="submit" value="Generate Email Link">
-        </form>
-        <p class="disclaimer">Note: This form operates entirely on your device, and no data is stored.</p>
+      <h2>Email Campaign</h2>
+      <p>Fill out the form below to participate in our email campaign.</p>
+      <label for="emailContent">Email Body</label>
+      <textarea id="emailContent">Put email here</textarea>
+      <form id="emailForm">
+        <p>
+          Add recipients separated by commas, no spaces. Ex.
+          email@test.com,email2@test.com
+        </p>
+        <label for="recipients">Recipients:</label>
+        <input type="text" id="recipients" name="recipients" required />
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required />
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="local">Local:</label>
+        <input type="text" id="local" name="local" required />
+        <!-- <input type="submit" value="Generate Email" /> -->
+        <input type="button" value="Print" onclick="printEmail()" />
+      </form>
+      <label for="mailto">Mailto Link:</label>
+      <textarea id="mailto" name="mailto"></textarea>
+      <p class="disclaimer">
+        Note: This form operates entirely on your device, and no data is stored.
+      </p>
     </div>
 
     <script>
-        document.getElementById('emailForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-            var name = document.getElementById('name').value;
-            var local = document.getElementById('local').value;
-            var subject = 'test campaign subject';
-            var body = "Dear BBBB local, component, and provincial executives,\n" +
-"\n" +
-"I am calling on you, as a BBBB member and a member of Labour for Palestine, demanding that you:\n" +
-"1. Send a letter to Premier EEE:\n" +
-"    - rejecting unfounded smears of BC Public Service workers\n" +
-"    - demanding that the Premier carefully define the meaning of antisemitism used in his statements and how he plans to direct employers to identify and fight it\n" +
-"    - reasserting to the Premier the political rights of BC Public Servants and expectations in regards to being a non-partisan workplace\n" +
-"    - reasserting the professionalism and inclusiveness of teachers and public sector workers\n" +
-"2. Communicate to BBBB members with information on their rights as promised\n" +
-"\n" +
-"Sincerely," +
-"\n\n" + name + "\nLocal: " + local;
-            var mailtoLink = 'mailto:recipient@example.com' + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-            window.location.href = mailtoLink; // Redirect to mailto link
-        });
+      function printEmail() {
+        var name = document.getElementById("name").value;
+        var local = document.getElementById("local").value;
+        var recipients = document.getElementById("recipients").value;
+        var subject = document.getElementById("subject").value;
+        var body =
+          document.getElementById("emailContent").value +
+          "\n\n" +
+          name +
+          "\nLocal: " +
+          local;
+        var mailtoLink =
+          "mailto:" +
+          recipients +
+          "?subject=" +
+          encodeURIComponent(subject) +
+          "&body=" +
+          encodeURIComponent(body);
+        document.getElementById("mailto").value = mailtoLink;
+      }
     </script>
-</body>
+  </body>
 </html>
