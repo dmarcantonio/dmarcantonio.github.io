@@ -82,13 +82,9 @@
         <input type="text" id="recipients" name="recipients" required />
         <label for="subject">Subject:</label>
         <input type="text" id="subject" name="subject" required />
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
-        <label for="local">Local:</label>
-        <input type="text" id="local" name="local" required />
-        <!-- <input type="submit" value="Generate Email" /> -->
         <input type="button" value="Print" onclick="printEmail()" />
       </form>
+      <p>
       <label for="mailto">Mailto Link:</label>
       <textarea id="mailto" name="mailto"></textarea>
       <p class="disclaimer">
@@ -98,16 +94,9 @@
 
     <script>
       function printEmail() {
-        var name = document.getElementById("name").value;
-        var local = document.getElementById("local").value;
         var recipients = document.getElementById("recipients").value;
         var subject = document.getElementById("subject").value;
-        var body =
-          document.getElementById("emailContent").value +
-          "\n\n" +
-          name +
-          "\nLocal: " +
-          local;
+        var body = document.getElementById("emailContent").value;
         var mailtoLink =
           "mailto:" +
           recipients +
